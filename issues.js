@@ -1,6 +1,7 @@
 const request = require("request");
 const cheerio = require("cheerio");
 const fs = require("fs");
+const path = require("path");
 function getIssuesPageHtml(url, topic, repoName)
 {
     request(url, cb);
@@ -11,7 +12,7 @@ function getIssuesPageHtml(url, topic, repoName)
         else
         getIssues(html,topic);
     }
-
+ 
     function getIssues(html)
     {
         let $ = cheerio.load(html);
@@ -27,6 +28,8 @@ function getIssuesPageHtml(url, topic, repoName)
             arr.push(link);
             let folderPath = path.join(__dirname, topic);
             dirCreator(folderPath);
+            let filePath = path.join(folderPath, repoName);
+            fs.writeFileSync(filePath, JSON.stringify(arr));
         }
         // console.log(topic, "         ", arr);
 

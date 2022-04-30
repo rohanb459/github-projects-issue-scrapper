@@ -55,7 +55,7 @@ function getReposPageHtml(url, topic)
                 // console.log(link);
                 let fullLink = `https://github.com${link}/issues`;
                 // console.log(fullLink);
-                let repoName = href.split("/").pop();
+                let repoName = link.split("/").pop();
                 getIssuesPageHtml(fullLink, topic, repoName);
             }
         }

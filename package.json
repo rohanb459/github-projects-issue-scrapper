@@ -19,6 +19,7 @@
   "homepage": "https://github.com/rohanb459/github-repo-issues-scrapper#readme",
   "dependencies": {
     "cheerio": "^1.0.0-rc.10",
+    "pdfkit": "^0.13.0",
     "request": "^2.88.2"
   }
 }
