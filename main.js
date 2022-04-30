@@ -1,6 +1,7 @@
 const url = "https://github.com/topics";
 const request = require("request");
 const cheerio = require("cheerio");
+const getIssuesPageHtml = require("./issues");
 // const getReposPage = require("./getReposPage");
 request(url,cb);
 
@@ -53,7 +54,9 @@ function getReposPageHtml(url, topic)
                 let link = $(anchorsArr[i]).attr("href");
                 // console.log(link);
                 let fullLink = `https://github.com${link}/issues`;
-                console.log(fullLink);
+                // console.log(fullLink);
+                let repoName = href.split("/").pop();
+                getIssuesPageHtml(fullLink, topic, repoName);
             }
         }
         console.log("``````````````````");
